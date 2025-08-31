@@ -1,0 +1,81 @@
+$name: "ChicagoRP"
+$version: "1.0.0"
+$author: "Jaaybo"
+$description: |
+  A Chicago-style QB-Core RP server—featuring gangs, custom cars,
+  streetwear, custom map, and urban police RP.
+
+$onesync: on
+
+tasks:
+  # 1. Download basic CFX resources
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: master
+    subpath: resources
+    dest: ./resources
+
+  # 2. Pull QB-Core framework
+  - action: download_github
+    src: https://github.com/qbcore-framework/qb-core
+    ref: master
+    dest: ./resources/[qb]/qb-core
+
+  # 3. Add core modules
+  - action: download_github
+    src: https://github.com/qbcore-framework/qb-policejob
+    ref: master
+    dest: ./resources/[qb]/qb-policejob
+
+  - action: download_github
+    src: https://github.com/qbcore-framework/qb-ambulancejob
+    ref: master
+    dest: ./resources/[qb]/qb-ambulancejob
+
+  - action: download_github
+    src: https://github.com/qbcore-framework/qb-gangs
+    ref: master
+    dest: ./resources/[qb]/qb-gangs
+
+  - action: download_github
+    src: https://github.com/qbcore-framework/qb-weapons
+    ref: master
+    dest: ./resources/[qb]/qb-weapons
+
+  - action: download_github
+    src: https://github.com/qbcore-framework/qb-drugs
+    ref: master
+    dest: ./resources/[qb]/qb-drugs
+
+  # 4. Add Chicago map mod (replace the URL as needed!)
+  - action: download_github
+    src: https://github.com/ItsANoBrainer/custom-chicago-map
+    ref: master
+    dest: ./resources/[maps]/custom-chicago-map
+
+  # 5. Add custom cars & clothes
+  - action: download_github
+    src: https://github.com/ItsANoBrainer/qb-customcars
+    ref: master
+    dest: ./resources/[qb]/qb-customcars
+
+  - action: download_github
+    src: https://github.com/ItsANoBrainer/qb-customclothes
+    ref: master
+    dest: ./resources/[qb]/qb-customclothes
+
+  # 6. Force resource load
+  - action: ensure
+    resources:
+      - [qb]/qb-core
+      - [qb]/qb-policejob
+      - [qb]/qb-ambulancejob
+      - [qb]/qb-gangs
+      - [qb]/qb-weapons
+      - [qb]/qb-drugs
+      - [maps]/custom-chicago-map
+      - [qb]/qb-customcars
+      - [qb]/qb-customclothes
+
+variables: {}
+
